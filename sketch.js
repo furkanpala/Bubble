@@ -79,7 +79,7 @@ class Bubble {
   let bubbles = new Array();
   
   function setup() {
-    createCanvas(1500, 720);
+    createCanvas(1400, 720);
     for (let i = 0; i < 50; i++) {
       bubbles.push(new Bubble(random(width), random(height), 20));
     }
