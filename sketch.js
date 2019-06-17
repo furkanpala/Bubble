@@ -79,7 +79,7 @@ class Bubble {
   let bubbles = new Array();
   
   function setup() {
-    createCanvas(1400, 720);
+    createCanvas(windowWidth, windowHeight);
     for (let i = 0; i < 50; i++) {
       bubbles.push(new Bubble(random(width), random(height), 20));
     }
@@ -114,3 +114,8 @@ class Bubble {
              }
         }
   }
+
+  function windowResized()
+{
+    resizeCanvas(windowWidth,windowHeight);
+}
