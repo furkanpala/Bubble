@@ -4,20 +4,16 @@ class Bubble {
     this.y = _y;
     this.r = _r;
     this.speed = createVector(random(-1, 1), random(-1, 1));
-    this.rC = random(150, 257);
-    this.gC = random(150, 257);
-    this.bC = random(150, 257);
+    this.clr = color(random(150,257),random(150,257),random(150,257));
   }
   
   colorChange() {
-    this.rC = random(150, 257);
-    this.gC = random(150, 257);
-    this.bC = random(150, 257);
+    this.clr = color(random(150,257),random(150,257),random(150,257));
   }
   show() {
     noFill();
     strokeWeight(2);
-    stroke(this.rC, this.gC, this.bC);
+    stroke(this.clr);
     circle(this.x, this.y, 2 * this.r);
   }
   move() {
@@ -49,6 +45,10 @@ class Bubble {
       let newSpeed = createVector(other.x - this.x, other.y - this.y);
       this.speed = this.speed.rotate(PI - this.speed.angleBetween(newSpeed));
       other.speed = other.speed.rotate(other.speed.angleBetween(newSpeed));
+      return true;
+    }
+    else {
+      return false;
     }
   }
   
@@ -80,8 +80,8 @@ function draw() {
     for (let j = 0; i != j && j < bubbles.length; j++) {
       if(bubbles[i].intersects(bubbles[j]))
       {
-        bubbles[i].colorChange();
         bubbles[j].colorChange();
+        bubbles[i].colorChange();
       }
     }
   }
